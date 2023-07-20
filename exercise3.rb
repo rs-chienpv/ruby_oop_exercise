@@ -19,12 +19,12 @@ class Triangle < Geometry
     @point_c = point_c
   end
   def triangle_perimeter
-    self.check ? p("Perimeter of the triangle: #{self.distance(point_a, point_b) + self.distance(point_b, point_c) + self.distance(point_c, point_a)}") : p('3 points do not form a triangle')
+    self.check_triangle ? p("Perimeter of the triangle: #{self.distance(point_a, point_b) + self.distance(point_b, point_c) + self.distance(point_c, point_a)}") : p('3 points do not form a triangle')
   end
   def triangle_isoscel?
     self.distance(point_a, point_b) == self.distance(point_b, point_c) || self.distance(point_c, point_a) == self.distance(point_a, point_b) || self.distance(point_a, point_b) == self.distance(point_b, point_c) ? true : false
   end
-  def check
+  def check_triangle
     [self.point_a.x,self.point_b.x,self.point_c.x].count(self.point_a.x) == 3 || [self.point_a.y,self.point_b.y,self.point_c.y].count(self.point_a.y) == 3 || self.distance(point_a, point_b) == 0 || self.distance(point_b, point_c) == 0 || self.distance(point_a, point_c) == 0 ? false : true
   end
 end
